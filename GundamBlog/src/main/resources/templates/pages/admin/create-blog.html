@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Basic Page Info -->
+  <meta charset="utf-8">
+  <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
+  <!-- Site favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/admin/vendors/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/admin/vendors/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/admin/vendors/images/favicon-16x16.png">
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+  <!-- CSS -->
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="../assets/admin/vendors/styles/core.css">
+  <link rel="stylesheet" type="text/css" href="../assets/admin/vendors/styles/icon-font.min.css">
+  <link rel="stylesheet" type="text/css" href="../assets/admin/vendors/styles/style.css">
+  <link rel="stylesheet" type="text/css" href="../assets/admin/src/plugins/switchery/switchery.min.css">
+  <script src="../assets/admin/ckeditor/ckeditor.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+</head>
+
+<body>
+<div th:replace="../templates/pages/admin/fragments/header :: header"></div>
+<div th:replace="../templates/pages/admin/fragments/right-sidebar:: right-sidebar"></div>
+<div th:replace="../templates/pages/admin/fragments/left-sidebar::left-sidebar"></div>
+<div class="mobile-menu-overlay"></div>
+<div class="main-container">
+  <div class="pd-ltr-20 xs-pd-20-10">
+
+    <!-- Create new blog Start -->
+    <div class="pd-20 card-box mb-30">
+      <form th:action="@{/admin/save-blog}" method="post">
+        <div class="clearfix">
+          <div class="pull-left">
+            <h4 class="text-blue h4">Tạo bài viết mới</h4>
+          </div>
+          <div class="pull-right">
+            <span>Bật/Tắt bài viết</span>
+            <input type="checkbox" th:field="*{blogCreationDTO.status}" th:checked="${blogCreationDTO.status}" checked
+                   class="switch-btn" data-color="#0099ff">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Title bài viết</label>
+          <input class="form-control" th:field="*{blogCreationDTO.title}" id="title" name="title" required
+                 placeholder="Title">
+        </div>
+
+        <div class="form-group">
+          <label>Chọn series cho bài viết</label>
+          <select class="custom-select2 form-control" name="state" style="width: 100%; height: 38px;"
+                  th:field="*{seriesDTO.seriesName}">
+            <option th:each="seriesDTOElement : ${seriesDTOList}" th:value="${seriesDTOElement.seriesName}"
+                    th:text="${seriesDTOElement.seriesName}"></option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Gắn thẻ cho bài viết</label>
+          <select class="selectpicker form-control" data-size="5" data-style="btn-outline-secondary"
+                  multiple data-max-options="5" th:field="*{tagDTOWrapper.tagsName}">
+            <option th:each="tagDTO : ${tagsDTO}" th:value="${tagDTO.tagName}" th:text="${tagDTO.tagName}"></option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Chọn ảnh Background </label>
+          <input type="file" class="form-control-file form-control height-auto">
+        </div>
+
+        <div class="form-group">
+          <label>Nội dung</label>
+          <textarea class="form-control" th:field="*{blogCreationDTO.content}" name="content" id="content"></textarea>
+        </div>
+        <small class="form-text text-muted">
+          <i>viết đi, viết nhiều vào</i>
+        </small>
+
+        <div class="form-group">
+          <label>Readonly input</label>
+          <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+        </div>
+        <div class="form-group">
+          <label>Disabled input</label>
+          <input type="text" class="form-control" placeholder="Disabled input" disabled="">
+        </div>
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary ">Tạo</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+		CKEDITOR.replace('content');
+</script>
+<!-- js -->
+<script src="../assets/admin/vendors/scripts/core.js"></script>
+<script src="../assets/admin/vendors/scripts/script.min.js"></script>
+<script src="../assets/admin/vendors/scripts/process.js"></script>
+<script src="../assets/admin/vendors/scripts/layout-settings.js"></script>
+<script src="../assets/admin/src/plugins/switchery/switchery.min.js"></script>
+<script src="../assets/admin/vendors/scripts/advanced-components.js"></script>
+</body>
+
+</html>

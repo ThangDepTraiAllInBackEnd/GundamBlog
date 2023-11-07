@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="left-side-bar" th:fragment="left-sidebar">
+  <div class="brand-logo">
+    <a th:href="@{'/admin/'}">
+      <img src="../assets/admin/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
+      <img src="../assets/admin/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+    </a>
+    <div class="close-sidebar" data-toggle="left-sidebar-close">
+      <i class="ion-close-round"></i>
+    </div>
+  </div>
+  <div class="menu-block customscroll">
+    <div class="sidebar-menu">
+      <ul id="accordion-menu">
+        <li>
+          <a th:href="@{'/admin/'}" class="dropdown-toggle no-arrow">
+            <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon dw dw-diagram"></span><span class="mtext">Trang chủ</span>
+          </a>
+          <ul class="submenu">
+            <li><a href="video-player.html">Chỉnh sửa video nổi bật</a></li>
+            <li><a href="login.html">Chỉnh sửa bài viết nổi bật</a></li>
+            <li><a href="forgot-password.html">Thay đổi ảnh slide</a></li>
+            <li><a href="reset-password.html">Update thông tin footer</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon dw dw-edit2"></span><span class="mtext">Blog</span>
+          </a>
+          <ul class="submenu">
+            <li><a th:href="@{'/admin/create-blog'}">Thêm bài viết mới</a></li>
+            <li><a th:href="@{'/admin/manage-blog'}">Quản lý các bài viết</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon dw dw-library"></span><span class="mtext">Series</span>
+          </a>
+          <ul class="submenu">
+            <li><a th:href="@{'/admin/manage-series'}">Quản lý series</a></li>
+            <li><a th:href="@{'/admin/create-series'}">Thêm series mới</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon dw dw-tag"></span><span class="mtext">Tag</span>
+          </a>
+          <ul class="submenu">
+            <li><a th:href="@{'/admin/manage-tag'}">Quản lý các thẻ</a></li>
+            <li><a th:href="@{'/admin/create-tag'}">Thêm tag mới</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon dw dw-right-arrow1"></span><span class="mtext">Additional Pages</span>
+          </a>
+          <ul class="submenu">
+            <li><a href="video-player.html">Video Player</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="forgot-password.html">Forgot Password</a></li>
+            <li><a href="reset-password.html">Reset Password</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon dw dw-browser2"></span><span class="mtext">Error Pages</span>
+          </a>
+          <ul class="submenu">
+            <li><a href="400.html">400</a></li>
+            <li><a href="403.html">403</a></li>
+            <li><a href="404.html">404</a></li>
+            <li><a href="500.html">500</a></li>
+            <li><a href="503.html">503</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="invoice.html" class="dropdown-toggle no-arrow">
+            <span class="micon dw dw-invoice"></span><span class="mtext">Task</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

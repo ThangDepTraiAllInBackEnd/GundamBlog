@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Colorlib Wordify &mdash; Minimal Blog Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400,700|Inconsolata:400,700" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="../assets/user/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/user/css/animate.css">
+  <!-- Theme Style -->
+  <link rel="stylesheet" href="../assets/user/css/style.css">
+</head>
+
+<body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v17.0"
+        nonce="xpRdyZC1"></script>
+
+
+<!-- Page Preloder -->
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+
+<!-- Header Section Begin -->
+<div th:replace="../templates/pages/user/fragments/header :: header"></div>
+<!-- End Header Section Begin -->
+
+<!-- Blog Details Hero Begin -->
+<section class="blog-hero spad set-bg" data-setbg="../assets/user/img/blog/blog-hero.jpg">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-8">
+        <div class="blog__hero__text">
+          <h2 th:text="${blogDTO.title}"></h2>
+          <ul>
+            <li>by <span th:text="${blogDTO.user.userInfo.name}"></span></li>
+            <li th:text="${blogDTO.date}"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Blog Details Hero End -->
+
+<!-- Blog Details Section Begin -->
+<div class="blog-details spad">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-8">
+        <div class="blog__details__content">
+
+          <div>
+            <div class="blog__hero__text">
+              <h2 th:text="${blogDTO.title}"></h2>
+              <ul>
+                <li>by <span th:text="${blogDTO.user.userInfo.name}"></span></li>
+                <li th:text="${blogDTO.date}"></li>
+              </ul>
+            </div>
+            <div class="blog__details__text" th:utext="${blogDTO.content}">
+            </div>
+
+          </div>
+
+          <div class="blog__details__tags">
+            <span><i class="fa fa-tag"></i> Tag:</span>
+            <span th:each="tag : ${blogDTO.tags}">
+               <a href="#" th:text="${tag.tagName}"></a>
+            </span>
+          </div>
+
+          <div th:unless="${prevBlogDTO == null}">
+            <div class="blog__details__option">
+              <div class="row">
+
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                  <a th:href="@{${prevBlogDTO.path}}" class="blog__details__option__item">
+                    <h5><i class="fa fa-angle-left"></i> Previous posts</h5>
+                    <div class="blog__details__option__item__img">
+                      <img src="../assets/user/img/blog/prev.jpg" alt="">
+                    </div>
+                    <div class="blog__details__option__item__text">
+                      </span>
+                      <h6 th:text="${prevBlogDTO.title}"></h6>
+                      <span th:text="${prevBlogDTO.date}"></span>
+                    </div>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="blog__details__recent">
+            <h4>Recent Posts</h4>
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__details__recent__item">
+                  <img src="../assets/user/img/blog/ri-1.jpg" alt="">
+                  <h5>What are the steps of a body lift procedure?</h5>
+                  <span>Dec 06, 2019</span>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__details__recent__item">
+                  <img src="../assets/user/img/blog/ri-2.jpg" alt="">
+                  <h5>What are the steps of a body lift procedure?</h5>
+                  <span>Dec 06, 2019</span>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__details__recent__item">
+                  <img src="../assets/user/img/blog/ri-3.jpg" alt="">
+                  <h5>How to shop for a cosm surgery procedure</h5>
+                  <span>Dec 06, 2019</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="blog__details__comment">
+            <h4>Leave a comment</h4>
+            <div class="fb-comments" data-href="https://boo.vn/" data-width="100%" data-numposts="5"
+                 data-admins="100012506653894"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Blog Details Section End -->
+
+<!-- Footer Section Begin -->
+<div th:replace="../templates/pages/user/fragments/footer :: footer"></div>
+<!-- Footer Section End -->
+
+<!-- Js Plugins -->
+<script src="../assets/user/js/jquery-3.3.1.min.js"></script>
+<script src="../assets/user/js/jquery-migrate-3.0.0.js"></script>
+<script src="../assets/user/js/owl.carousel.min.js"></script>
+<script src="../assets/user/js/jquery.waypoints.min.js"></script>
+<script src="../assets/user/js/jquery.stellar.min.js"></script>
+<script src="../assets/user/js/main.js"></script>
+<script src="../assets/user/js/main2.js"></script>
+<script src="../assets/user/js/bootstrap.min.js"></script>
+<script src="../assets/user/js/jquery.magnific-popup.min.js"></script>
+<script src="../assets/user/js/mixitup.min.js"></script>
+<script src="../assets/user/js/masonry.pkgd.min.js"></script>
+<script src="../assets/user/js/jquery.slicknav.js"></script>
+</body>
+
+</html>

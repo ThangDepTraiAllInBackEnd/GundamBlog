@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Videograph Template">
+  <meta name="keywords" content="Videograph, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<!-- Header Section Begin -->
+<header th:fragment="header" class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="header__logo">
+          <a href="/"><img src="../assets/user/img/logo.png" alt=""></a>
+        </div>
+      </div>
+      <div class="col-lg-10">
+        <div class="header__nav__option">
+          <nav class="header__nav__menu mobile-menu">
+            <ul>
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/blog/">Bài viết gần đây</a>
+                <ul class="dropdown">
+                  <li><a href="./blog.html">Blog</a></li>
+                  <li><a href="./blog-details.html">Blog Details</a></li>
+                </ul>
+              </li>
+              <li><a href="./services.html">Series nhập môn</a></li>
+              <li><a href="#">Series review</a>
+              </li>
+              <li><a href="./about.html">About me</a></li>
+              <li>  <span class="search-box">
+                  <form th:action="@{'/blog/search'}">
+                  <button class="btn-search"><i class="fas fa-search"></i></button>
+                  <input type="text" class="input-search" name="keyword" placeholder="Tìm kiếm blog...">
+                </form>
+                 </span>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+  </div>
+</header>
+<!-- Header End -->
+</body>
+</html>

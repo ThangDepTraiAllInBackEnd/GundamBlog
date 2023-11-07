@@ -1,0 +1,122 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Add series</h1>-->
+<!--<form th:action="@{/admin/save-series}" th:object="${seriesDTO}" method="post">-->
+<!--  <div>-->
+<!--    <label for="seriesName">Title:</label>-->
+<!--    <input type="text" id="seriesName" name="seriesName" required/>-->
+<!--  </div>-->
+<!--  <button type="submit">create series</button>-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Basic Page Info -->
+  <meta charset="utf-8">
+  <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
+
+  <!-- Site favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/admin/vendors/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/admin/vendors/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/admin/vendors/images/favicon-16x16.png">
+
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="../assets/admin/vendors/styles/core.css">
+  <link rel="stylesheet" type="text/css" href="../assets/admin/vendors/styles/icon-font.min.css">
+  <link rel="stylesheet" type="text/css" href="../assets/admin/vendors/styles/style.css">
+
+  <link rel="stylesheet" type="text/css" href="../assets/admin/src/plugins/switchery/switchery.min.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+</head>
+<body>
+<div th:replace="../templates/pages/admin/fragments/header :: header"></div>
+<div th:replace="../templates/pages/admin/fragments/right-sidebar:: right-sidebar"></div>
+<div th:replace="../templates/pages/admin/fragments/left-sidebar::left-sidebar"></div>
+<div class="mobile-menu-overlay"></div>
+<div class="main-container">
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+      <div class="page-header">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="title">
+              <h4>Quản lý Series</h4>
+            </div>
+            <nav aria-label="breadcrumb" role="navigation">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quản lý Series</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <!-- Default Basic Forms Start -->
+      <div class="pd-20 card-box mb-30">
+        <div class="clearfix">
+          <div class="pull-left">
+            <h4 class="text-blue h4">Thêm series mới</h4>
+          </div>
+          <div class="pull-right">
+            <div class="col-md-6 col-sm-12 text-right">
+            </div>
+          </div>
+        </div>
+        <form th:action="@{/admin/save-series}" th:object="${seriesDTO}" method="post">
+          <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Nhập tên series</label>
+            <div class="col-sm-12 col-md-10">
+              <input class="form-control" id="seriesName" name="seriesName" required placeholder="nhập ở đây...">
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Tạo</button>
+          </div>
+        </form>
+        <div class="collapse collapse-box" id="basic-form1">
+          <div class="code-box">
+            <div class="clearfix">
+              <a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"
+                 data-clipboard-target="#copy-pre"><i class="fa fa-clipboard"></i> Copy Code</a>
+              <a href="#basic-form1" class="btn btn-primary btn-sm pull-right" rel="content-y"
+                 data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+            </div>
+            <pre><code class="xml copy-pre" id="copy-pre">
+							</code></pre>
+          </div>
+        </div>
+        <div class="text-center"><a th:href="@{'/admin/manage-series'}" class="link-primary">Kiểm tra các series đã tồn
+          tại ở đây</a></div>
+      </div>
+      <!-- Default Basic Forms End -->
+    </div>
+  </div>
+  <!-- js -->
+  <script src="../assets/admin/vendors/scripts/core.js"></script>
+  <script src="../assets/admin/vendors/scripts/script.min.js"></script>
+  <script src="../assets/admin/vendors/scripts/process.js"></script>
+  <script src="../assets/admin/vendors/scripts/layout-settings.js"></script>
+  <!-- switchery js -->
+  <script src="../assets/admin/src/plugins/switchery/switchery.min.js"></script>
+  <!-- bootstrap-touchspin js -->
+  <script src="../assets/admin/vendors/scripts/advanced-components.js"></script>
+</div>
+</body>
+</html>

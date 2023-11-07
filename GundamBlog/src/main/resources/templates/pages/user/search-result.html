@@ -1,0 +1,180 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Colorlib Wordify &mdash; Minimal Blog Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400,700|Inconsolata:400,700" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="../assets/user/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="../assets/user/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/user/css/animate.css">
+  <!-- Theme Style -->
+  <link rel="stylesheet" href="../assets/user/css/style.css">
+</head>
+
+<body>
+
+<!-- Page Preloder -->
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+
+<!-- Header Section Begin -->
+<div th:replace="../templates/pages/user/fragments/header :: header"></div>
+<!-- End Header Section Begin -->
+
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option spad set-bg" data-setbg="../assets/user/img/breadcrumb-bg.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="breadcrumb__text">
+          <h2>About us</h2>
+          <div class="breadcrumb__links">
+            <a href="#">Home</a>
+            <span>About</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Breadcrumb End -->
+
+<div class="wrap">
+  <section class="site-section pt-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <h2 class="mb-4">Category: Food</h2>
+        </div>
+      </div>
+
+
+      <div class="row blog-entries">
+
+        <div class="col-md-12 col-lg-8 main-content" th:if="${totalElements ==0}">
+          <div class="col-md-6">
+            <i><h6 class="mb-4" th:text="${message}"></h6></i>
+          </div>
+        </div>
+
+        <div class="col-md-12 col-lg-8 main-content" th:if="${keyword!= null && keyword != '' && totalElements >0}">
+          <div class="row mb-5 mt-5">
+            <div class="col-md-12">
+
+              <div class="post-entry-horzontal" th:each="blogDTO : ${blogDTOList}">
+                <a th:href="@{${blogDTO.path}}">
+                  <div class="image element-animate" data-animate-effect="fadeIn"
+                       style="background-image: url(../assets/user/img/slide/slide1.jpg);"></div>
+                  <span class="text">
+                      <div class="post-meta">
+                        <span th:text="${blogDTO.date}">March 15, 2018 </span> &bullet;
+                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                      </div>
+                      <h2 th:text="${blogDTO.title}"></h2>
+                    </span>
+                </a>
+              </div>
+              <!-- END post -->
+
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-md-12 text-center">
+              <nav aria-label="Page navigation" class="text-center" th:if="${totalElements >0}">
+                <ul class="pagination">
+                  <li class="page-item "><a class="page-link" th:if="${currentPage>1}"
+                                            th:href="@{'?pageNo='+${currentPage-1}}">&lt;</a></li>
+                  <li class="page-item"><a class="page-link"
+                                           th:href="@{${keyword!= null && keyword != ''? '?keyword='+keyword+'&':'?'}+'pageNo='+${pageNumber}}"
+                                           th:text="${pageNumber}"
+                                           th:each="pageNumber:${#numbers.sequence(1,totalPage)}"></a>
+                  </li>
+                  <li class="page-item"><a class="page-link" th:if="${currentPage<totalPage}"
+                                           th:href="@{'?pageNo='+${currentPage+1}}">&gt;</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- END main-content -->
+        <div class="col-md-12 col-lg-4 sidebar">
+          <div class="sidebar-box search-form-wrap">
+            <form th:action="@{'/blog/search'}" class="search-form">
+              <div class="form-group">
+                <input type="text" class="form-control" id="s" name="keyword" placeholder="Tìm kiếm từ khóa...">
+              </div>
+            </form>
+          </div>
+          <div class="sidebar-box">
+            <h3 class="heading">Categories</h3>
+            <ul class="categories">
+              <li><a href="#">Food <span>(12)</span></a></li>
+              <li><a href="#">Travel <span>(22)</span></a></li>
+              <li><a href="#">Lifestyle <span>(37)</span></a></li>
+              <li><a href="#">Business <span>(42)</span></a></li>
+              <li><a href="#">Adventure <span>(14)</span></a></li>
+            </ul>
+          </div>
+          <!-- END sidebar-box -->
+
+          <div class="sidebar-box">
+            <h3 class="heading">Tags</h3>
+            <ul class="tags">
+              <li><a href="#">Travel</a></li>
+              <li><a href="#">Adventure</a></li>
+              <li><a href="#">Food</a></li>
+              <li><a href="#">Lifestyle</a></li>
+              <li><a href="#">Business</a></li>
+              <li><a href="#">Freelancing</a></li>
+              <li><a href="#">Travel</a></li>
+              <li><a href="#">Adventure</a></li>
+              <li><a href="#">Food</a></li>
+              <li><a href="#">Lifestyle</a></li>
+              <li><a href="#">Business</a></li>
+              <li><a href="#">Freelancing</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- END sidebar -->
+      </div>
+    </div>
+  </section>
+</div>
+<!-- Footer Section Begin -->
+<div th:replace="../templates/pages/user/fragments/footer :: footer"></div>
+<!-- Footer Section End -->
+<script src="../assets/user/js/jquery-3.3.1.min.js"></script>
+<script src="../assets/user/js/jquery-migrate-3.0.0.js"></script>
+<script src="../assets/user/js/owl.carousel.min.js"></script>
+<script src="../assets/user/js/jquery.waypoints.min.js"></script>
+<script src="../assets/user/js/jquery.stellar.min.js"></script>
+<script src="../assets/user/js/main.js"></script>
+<script src="../assets/user/js/main2.js"></script>
+<script src="../assets/user/js/bootstrap.min.js"></script>
+<script src="../assets/user/js/jquery.magnific-popup.min.js"></script>
+<script src="../assets/user/js/mixitup.min.js"></script>
+<script src="../assets/user/js/masonry.pkgd.min.js"></script>
+<script src="../assets/user/js/jquery.slicknav.js"></script>
+</body>
+
+</html>
